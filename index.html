@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Olatunji Mafe — Product Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F8F6F1;
+    --surface: #FFFFFF;
+    --ink: #1A1814;
+    --ink-2: #5C5852;
+    --ink-3: #9B978F;
+    --accent: #C85A2A;
+    --accent-2: #E8D5C4;
+    --line: rgba(26,24,20,0.1);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+    --radius: 4px;
+    --radius-lg: 12px;
+    --max: 1100px;
+    --nav-h: 64px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--nav-h);
+    background: rgba(248,246,241,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 clamp(1.5rem, 5vw, 4rem);
+  }
+
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: var(--ink);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.85rem;
+    color: var(--ink-2);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  .nav-cta {
+    font-size: 0.82rem;
+    color: var(--accent) !important;
+    border: 1px solid var(--accent) !important;
+    padding: 0.35rem 1rem;
+    border-radius: var(--radius);
+    transition: background 0.2s, color 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--accent) !important; color: #fff !important; }
+
+  /* SECTIONS */
+  section { padding: 7rem clamp(1.5rem, 5vw, 4rem); }
+  section:first-of-type { padding-top: calc(var(--nav-h) + 5rem); }
+
+  .container { max-width: var(--max); margin: 0 auto; }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: calc(var(--nav-h) + 2rem);
+    padding-bottom: 4rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+    max-width: var(--max);
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 24px; height: 1px;
+    background: var(--accent);
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--ink-2);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--ink);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.8rem 1.8rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+
+  .btn-outline {
+    display: inline-block;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    font-size: 0.85rem;
+    font-weight: 400;
+    padding: 0.8rem 1.8rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .stat-card:hover::before { transform: scaleX(1); }
+
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 2.8rem;
+    line-height: 1;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-label {
+    font-size: 0.78rem;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .profile-chip {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .avatar {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 1.2rem;
+    color: #fff;
+    flex-shrink: 0;
+  }
+
+  .chip-info p:first-child {
+    font-weight: 500;
+    font-size: 0.95rem;
+  }
+  .chip-info p:last-child {
+    font-size: 0.8rem;
+    color: var(--ink-3);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .chip-info p:last-child::before {
+    content: '●';
+    color: #3CAF74;
+    font-size: 0.6rem;
+  }
+
+  /* SECTION HEADER */
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 4rem;
+    gap: 2rem;
+  }
+
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 18px; height: 1px;
+    background: var(--accent);
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  /* WORK */
+  #work { background: var(--bg); }
+
+  .cases-grid {
+    display: grid;
+    gap: 2px;
+  }
+
+  .case-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    cursor: pointer;
+    transition: transform 0.25s, box-shadow 0.25s;
+    border: 1px solid var(--line);
+    margin-bottom: 1.5rem;
+  }
+
+  .case-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  }
+
+  .case-card.reverse { direction: rtl; }
+  .case-card.reverse > * { direction: ltr; }
+
+  .case-content {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .case-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.75rem;
+    border-radius: 100px;
+    font-weight: 500;
+  }
+
+  .tag-ux { background: #F0E8E0; color: #7A4A2A; }
+  .tag-research { background: #E5EBF8; color: #2A4080; }
+  .tag-mobile { background: #E0EFE5; color: #1E5E35; }
+  .tag-platform { background: #F5E5F0; color: #6E2060; }
+  .tag-ecommerce { background: #FFF0E0; color: #804A10; }
+  .tag-ai { background: #E8E5FF; color: #3520B0; }
+
+  .case-num {
+    font-family: var(--serif);
+    font-size: 0.9rem;
+    color: var(--ink-3);
+    margin-bottom: 0.5rem;
+  }
+
+  h3 {
+    font-family: var(--serif);
+    font-size: 1.8rem;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+    color: var(--ink);
+  }
+
+  .case-desc {
+    color: var(--ink-2);
+    font-size: 0.95rem;
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+    flex: 1;
+  }
+
+  .case-metrics {
+    display: flex;
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .metric {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .metric-val {
+    font-family: var(--serif);
+    font-size: 1.6rem;
+    color: var(--accent);
+    line-height: 1;
+  }
+
+  .metric-name {
+    font-size: 0.72rem;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .case-visual {
+    background: #F0EBE3;
+    position: relative;
+    overflow: hidden;
+    min-height: 360px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .case-visual svg {
+    width: 100%;
+    max-width: 340px;
+    opacity: 0.85;
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .case-card:hover .case-visual svg { opacity: 1; transform: scale(1.03); }
+
+  /* Unique bg per case */
+  .case-visual.v1 { background: linear-gradient(135deg, #EDE8E0 0%, #D8CFC4 100%); }
+  .case-visual.v2 { background: linear-gradient(135deg, #E0E8F0 0%, #C8D8E8 100%); }
+  .case-visual.v3 { background: linear-gradient(135deg, #E8EDE0 0%, #CFDBCA 100%); }
+  .case-visual.v4 { background: linear-gradient(135deg, #EDE0E8 0%, #DBCAD5 100%); }
+
+  /* PROCESS */
+  #process { background: var(--ink); color: #fff; }
+  #process .section-label { color: var(--accent-2); }
+  #process .section-label::before { background: var(--accent-2); }
+  #process h2 { color: #fff; }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    position: relative;
+  }
+
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: rgba(255,255,255,0.15);
+  }
+
+  .process-step {
+    padding: 1rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-num {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    color: var(--accent-2);
+    margin: 0 auto 1.2rem;
+    transition: background 0.3s;
+  }
+  .process-step:hover .step-num { background: var(--accent); border-color: var(--accent); }
+
+  .step-title {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    color: #fff;
+  }
+
+  .step-desc {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.55;
+  }
+
+  /* TOOLS */
+  #tools {
+    background: var(--bg);
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .tools-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .tool-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    font-size: 0.85rem;
+    color: var(--ink-2);
+    background: var(--surface);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .tool-pill:hover { border-color: var(--accent); color: var(--accent); }
+  .tool-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* ABOUT */
+  #about { border-top: 1px solid var(--line); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    color: var(--ink-2);
+    line-height: 1.75;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-text p strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .certs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .cert-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem 1.2rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    transition: border-color 0.2s;
+  }
+  .cert-item:hover { border-color: var(--accent); }
+
+  .cert-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 0.35rem;
+  }
+
+  .cert-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-bottom: 0.15rem;
+  }
+  .cert-org {
+    font-size: 0.75rem;
+    color: var(--ink-3);
+  }
+
+  /* CONTACT */
+  #contact {
+    background: var(--ink);
+    color: #fff;
+    text-align: center;
+    padding: 8rem clamp(1.5rem, 5vw, 4rem);
+  }
+
+  #contact .section-label { color: var(--accent-2); justify-content: center; }
+  #contact .section-label::before { background: var(--accent-2); }
+  #contact h2 { color: #fff; font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 1rem; }
+
+  .contact-sub {
+    color: rgba(255,255,255,0.55);
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-link {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    font-size: 0.85rem;
+    font-weight: 400;
+    text-decoration: none;
+    border-radius: var(--radius);
+    letter-spacing: 0.04em;
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+  }
+  .contact-link.primary {
+    background: var(--accent);
+    color: #fff;
+  }
+  .contact-link.primary:hover { background: #B04D22; transform: translateY(-1px); }
+  .contact-link.ghost {
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7);
+  }
+  .contact-link.ghost:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 1.5rem clamp(1.5rem, 5vw, 4rem);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  footer p {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* MOBILE MENU */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+  .hamburger span {
+    display: block;
+    width: 22px; height: 1.5px;
+    background: var(--ink);
+    transition: transform 0.25s, opacity 0.25s;
+  }
+
+  /* CASE STUDY OVERLAY */
+  .overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(26,24,20,0.65);
+    z-index: 200;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    backdrop-filter: blur(4px);
+  }
+  .overlay.open { display: flex; }
+
+  .modal {
+    background: var(--bg);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 780px;
+    max-height: 88vh;
+    overflow-y: auto;
+    position: relative;
+  }
+
+  .modal-header {
+    padding: 2.5rem 2.5rem 1.5rem;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .modal-close {
+    background: none;
+    border: 1px solid var(--line);
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--ink-2);
+    flex-shrink: 0;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .modal-close:hover { border-color: var(--accent); color: var(--accent); }
+
+  .modal-body {
+    padding: 2rem 2.5rem 2.5rem;
+  }
+
+  .modal-section {
+    margin-bottom: 2rem;
+  }
+
+  .modal-section h4 {
+    font-family: var(--serif);
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+    margin-bottom: 0.75rem;
+    color: var(--accent);
+  }
+
+  .modal-section p, .modal-section li {
+    font-size: 0.9rem;
+    color: var(--ink-2);
+    line-height: 1.7;
+  }
+
+  .modal-section ul {
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .impact-chips {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 0.75rem;
+  }
+
+  .impact-chip {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+  .impact-chip strong {
+    display: block;
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.15rem;
+  }
+  .impact-chip span {
+    color: var(--ink-3);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-in {
+    opacity: 0;
+    animation: fadeUp 0.6s ease forwards;
+  }
+
+  .fade-in:nth-child(1) { animation-delay: 0.05s; }
+  .fade-in:nth-child(2) { animation-delay: 0.15s; }
+  .fade-in:nth-child(3) { animation-delay: 0.25s; }
+  .fade-in:nth-child(4) { animation-delay: 0.35s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .case-card { grid-template-columns: 1fr; }
+    .case-visual { min-height: 220px; }
+    .process-steps { grid-template-columns: repeat(3, 1fr); }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .section-header { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .process-steps { grid-template-columns: repeat(2, 1fr); }
+    .process-steps::before { display: none; }
+    h1 { font-size: 2.8rem; }
+    .stat-row { grid-template-columns: 1fr 1fr; }
+    .case-metrics { flex-wrap: wrap; gap: 1rem; }
+    .modal-header { padding: 1.5rem; }
+    .modal-body { padding: 1.25rem 1.5rem 1.5rem; }
+  }
+</style>
+<!-- Paste this right before your closing </head> tag -->
+<script type="text/javascript">
+  (function(e,c){if(!c.__SV){var l,h;window.mixpanel=c;c._i=[];c.init=function(q,r,f){function t(d,a){var g=a.split(".");2==g.length&&(d=d[g[0]],a=g[1]);d[a]=function(){d.push([a].concat(Array.prototype.slice.call(arguments,0)))}}var b=c;"undefined"!==typeof f?b=c[f]=[]:f="mixpanel";b.people=b.people||[];b.toString=function(d){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);d||(a+=" (stub)");return a};b.people.toString=function(){return b.toString(1)+".people (stub)"};l="disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders start_session_recording stop_session_recording people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split(" ");
+  for(h=0;h<l.length;h++)t(b,l[h]);var n="set set_once union unset remove delete".split(" ");b.get_group=function(){function d(p){a[p]=function(){b.push([g,[p].concat(Array.prototype.slice.call(arguments,0))])}}for(var a={},g=["get_group"].concat(Array.prototype.slice.call(arguments,0)),m=0;m<n.length;m++)d(n[m]);return a};c._i.push([q,r,f])};c.__SV=1.2;var k=e.createElement("script");k.type="text/javascript";k.async=!0;k.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===
+  e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";e=e.getElementsByTagName("script")[0];e.parentNode.insertBefore(k,e)}})(document,window.mixpanel||[])
+
+  mixpanel.init('c733901367b98406b85d45e3f7b22ea5', {
+    autocapture: true,
+    record_sessions_percent: 100,
+  })
+
+</script>
+
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="#hero" class="nav-logo">Olatunji Mafe</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="mailto:workwithtunji@gmail.com" class="nav-cta">Let's Talk</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Menu" onclick="toggleMenu(this)">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid container">
+    <div>
+      <div class="hero-tag fade-in">Product Designer · Lagos, Nigeria</div>
+      <h1 class="fade-in">Design that <em>drives</em> real outcomes</h1>
+      <p class="hero-sub fade-in">Research-driven UX designer crafting end-to-end digital products for web and mobile — where user insight meets business impact.</p>
+      <div class="hero-ctas fade-in">
+        <a href="#work" class="btn-primary">View Case Studies</a>
+        <a href="mailto:workwithtunji@gmail.com" class="btn-outline">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="profile-chip fade-in">
+        <div class="avatar">OM</div>
+        <div class="chip-info">
+          <p>Olatunji Mafe</p>
+          <p>Available for new projects</p>
+        </div>
+      </div>
+      <div class="stat-row fade-in">
+        <div class="stat-card">
+          <div class="stat-num">20+</div>
+          <div class="stat-label">Products Shipped</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">80%</div>
+          <div class="stat-label">UX Performance Lift</div>
+        </div>
+      </div>
+      <div class="stat-row fade-in">
+        <div class="stat-card">
+          <div class="stat-num">1M+</div>
+          <div class="stat-label">Users Reached</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">50%</div>
+          <div class="stat-label">Dev Rate Increase</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section id="work">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Selected Work</div>
+        <h2>Case Studies</h2>
+      </div>
+      <p style="font-size:0.9rem;color:var(--ink-3);max-width:340px;line-height:1.6;">Each project tells a story of user research, design decisions, and measurable outcomes.</p>
+    </div>
+
+    <!-- Case 1: Social Badge -->
+    <div class="case-card" onclick="openCase('badge')">
+      <div class="case-content">
+        <div>
+          <div class="case-tags">
+            <span class="tag tag-ux">UX Design</span>
+            <span class="tag tag-platform">Platform</span>
+            <span class="tag tag-mobile">Mobile</span>
+          </div>
+          <div class="case-num">01 / 04</div>
+          <h3>Social Badge — Digital Badge Creator</h3>
+          <p class="case-desc">Designed end-to-end authentication flows and a notification center for a digital badge platform serving event organizers and tech community attendees. Balanced discoverability with simplicity across complex user journeys.</p>
+        </div>
+        <div class="case-metrics">
+          <div class="metric">
+            <span class="metric-val">50%</span>
+            <span class="metric-name">Dev Rate Increase</span>
+          </div>
+          <div class="metric">
+            <span class="metric-val">5+</span>
+            <span class="metric-name">Research Sessions</span>
+          </div>
+          <div class="metric">
+            <span class="metric-val">3</span>
+            <span class="metric-name">Core Flows</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-visual v1">
+        <svg viewBox="0 0 320 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Phone frame -->
+          <rect x="95" y="20" width="130" height="240" rx="16" fill="white" stroke="#C8BFB5" stroke-width="1.5"/>
+          <rect x="105" y="34" width="110" height="190" rx="8" fill="#F8F4F0"/>
+          <!-- Badge illustration -->
+          <circle cx="160" cy="90" r="30" fill="#C85A2A" opacity="0.15"/>
+          <circle cx="160" cy="90" r="20" fill="#C85A2A" opacity="0.8"/>
+          <text x="160" y="95" font-family="Georgia,serif" font-size="14" fill="white" text-anchor="middle">★</text>
+          <!-- Notification rows -->
+          <rect x="112" y="132" width="86" height="8" rx="4" fill="#D4CEC8"/>
+          <rect x="112" y="146" width="60" height="6" rx="3" fill="#E0DAD4"/>
+          <rect x="112" y="162" width="86" height="8" rx="4" fill="#D4CEC8"/>
+          <rect x="112" y="176" width="70" height="6" rx="3" fill="#E0DAD4"/>
+          <!-- Nav dots -->
+          <circle cx="142" cy="215" r="3" fill="#C85A2A"/>
+          <circle cx="155" cy="215" r="3" fill="#D4CEC8"/>
+          <circle cx="168" cy="215" r="3" fill="#D4CEC8"/>
+          <circle cx="181" cy="215" r="3" fill="#D4CEC8"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Case 2: Proptech Redesign -->
+    <div class="case-card reverse" onclick="openCase('proptech')">
+      <div class="case-content">
+        <div>
+          <div class="case-tags">
+            <span class="tag tag-ux">Redesign</span>
+            <span class="tag tag-research">Research</span>
+            <span class="tag tag-platform">PropTech</span>
+          </div>
+          <div class="case-num">02 / 04</div>
+          <h3>Property-Tech Feature Redesign</h3>
+          <p class="case-desc">Redesigned a core feature for a leading Nigerian proptech platform serving over 1 million users. Identified usability gaps through targeted research and delivered a cohesive visual system that significantly improved task completion rates.</p>
+        </div>
+        <div class="case-metrics">
+          <div class="metric">
+            <span class="metric-val">1M+</span>
+            <span class="metric-name">Users Served</span>
+          </div>
+          <div class="metric">
+            <span class="metric-val">↑</span>
+            <span class="metric-name">Visual Consistency</span>
+          </div>
+          <div class="metric">
+            <span class="metric-val">A11y</span>
+            <span class="metric-name">First Approach</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-visual v2">
+        <svg viewBox="0 0 320 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Dashboard mockup -->
+          <rect x="30" y="30" width="260" height="180" rx="10" fill="white" stroke="#B8CCDC" stroke-width="1.2"/>
+          <!-- Sidebar -->
+          <rect x="30" y="30" width="55" height="180" rx="10" fill="#2A4A6A" opacity="0.85"/>
+          <circle cx="57" cy="60" r="10" fill="white" opacity="0.15"/>
+          <rect x="44" y="82" width="26" height="4" rx="2" fill="white" opacity="0.3"/>
+          <rect x="44" y="96" width="26" height="4" rx="2" fill="white" opacity="0.3"/>
+          <rect x="44" y="110" width="26" height="4" rx="2" fill="white" opacity="0.5"/>
+          <rect x="44" y="124" width="26" height="4" rx="2" fill="white" opacity="0.3"/>
+          <!-- Content -->
+          <rect x="98" y="48" width="90" height="8" rx="4" fill="#AFCADE"/>
+          <rect x="98" y="62" width="130" height="60" rx="6" fill="#EBF2F8"/>
+          <rect x="106" y="72" width="60" height="6" rx="3" fill="#AFCADE"/>
+          <rect x="106" y="84" width="100" height="4" rx="2" fill="#CCDDE8"/>
+          <rect x="106" y="94" width="80" height="4" rx="2" fill="#CCDDE8"/>
+          <rect x="98" y="134" width="60" height="28" rx="4" fill="#2A4A6A" opacity="0.85"/>
+          <rect x="168" y="134" width="60" height="28" rx="4" fill="#EBF2F8"/>
+          <!-- Bottom chart -->
+          <rect x="98" y="175" width="178" height="20" rx="4" fill="#EBF2F8"/>
+          <rect x="98" y="175" width="110" height="20" rx="4" fill="#2A4A6A" opacity="0.4"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Case 3: Venn App -->
+    <div class="case-card" onclick="openCase('venn')">
+      <div class="case-content">
+        <div>
+          <div class="case-tags">
+            <span class="tag tag-ai">AI-Powered</span>
+            <span class="tag tag-mobile">Mobile</span>
+            <span class="tag tag-ux">UX Research</span>
+          </div>
+          <div class="case-num">03 / 04</div>
+          <h3>Venn — AI-Powered Networking App</h3>
+          <p class="case-desc">Led UX design for an AI-powered event networking platform helping attendees build meaningful connections. Conducted user interviews to map connection patterns and designed intelligent match flows that reduce friction at critical touch points.</p>
+        </div>
+        <div class="case-metrics">
+          <div class="metric">
+            <span class="metric-val">AI</span>
+            <span class="metric-name">Match Engine</span>
+          </div>
+          <div class="metric">
+            <span class="metric-val">End→End</span>
+            <span class="metric-name">UX Ownership</span>
+          </div>
+          <div class="metric">
+            <span class="metric-val">↓</span>
+            <span class="metric-name">Connection Friction</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-visual v3">
+        <svg viewBox="0 0 320 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Venn circles -->
+          <circle cx="140" cy="145" r="65" fill="#3B6D11" opacity="0.12"/>
+          <circle cx="180" cy="145" r="65" fill="#3B6D11" opacity="0.12"/>
+          <!-- Overlap -->
+          <ellipse cx="160" cy="145" rx="28" ry="40" fill="#3B6D11" opacity="0.25"/>
+          <text x="160" y="150" font-family="Georgia,serif" font-size="11" fill="#27500A" text-anchor="middle">Connect</text>
+          <!-- Person icons left -->
+          <circle cx="120" cy="138" r="10" fill="#3B6D11" opacity="0.5"/>
+          <rect x="112" y="152" width="16" height="10" rx="4" fill="#3B6D11" opacity="0.4"/>
+          <!-- Person icons right -->
+          <circle cx="200" cy="138" r="10" fill="#3B6D11" opacity="0.5"/>
+          <rect x="192" y="152" width="16" height="10" rx="4" fill="#3B6D11" opacity="0.4"/>
+          <!-- Labels -->
+          <rect x="75" y="200" width="70" height="22" rx="4" fill="white" stroke="#C4D5BC" stroke-width="1"/>
+          <rect x="175" y="200" width="70" height="22" rx="4" fill="white" stroke="#C4D5BC" stroke-width="1"/>
+          <rect x="115" y="200" width="90" height="22" rx="4" fill="#3B6D11" opacity="0.75"/>
+          <text x="160" y="215" font-family="sans-serif" font-size="9" fill="white" text-anchor="middle" font-weight="500">AI Match Score</text>
+          <!-- Title -->
+          <text x="160" y="60" font-family="Georgia,serif" font-size="16" fill="#27500A" text-anchor="middle">Venn</text>
+          <text x="160" y="76" font-family="sans-serif" font-size="9" fill="#3B6D11" text-anchor="middle" opacity="0.7">Meaningful Connections</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Case 4: Healthcare -->
+    <div class="case-card reverse" onclick="openCase('health')">
+      <div class="case-content">
+        <div>
+          <div class="case-tags">
+            <span class="tag tag-research">Healthcare</span>
+            <span class="tag tag-ux">UX Design</span>
+            <span class="tag tag-ecommerce">Data-Driven</span>
+          </div>
+          <div class="case-num">04 / 04</div>
+          <h3>Healthcare Research Workflow Platform</h3>
+          <p class="case-desc">Designed a research management platform for medical professionals — transforming complex data workflows into intuitive interfaces. Prioritised accessibility (WCAG), information architecture, and responsive design across desktop and mobile contexts.</p>
+        </div>
+        <div class="case-metrics">
+          <div class="metric">
+            <span class="metric-val">WCAG</span>
+            <span class="metric-name">Compliant</span>
+          </div>
+          <div class="metric">
+            <span class="metric-val">Multi</span>
+            <span class="metric-name">Device Support</span>
+          </div>
+          <div class="metric">
+            <span class="metric-val">Complex</span>
+            <span class="metric-name">IA Simplified</span>
+          </div>
+        </div>
+      </div>
+      <div class="case-visual v4">
+        <svg viewBox="0 0 320 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Monitor frame -->
+          <rect x="40" y="30" width="240" height="165" rx="8" fill="white" stroke="#C8B8C8" stroke-width="1.2"/>
+          <rect x="50" y="42" width="220" height="135" rx="4" fill="#F8F0F5"/>
+          <!-- Header bar -->
+          <rect x="50" y="42" width="220" height="28" rx="4" fill="#6E2060" opacity="0.7"/>
+          <rect x="62" y="52" width="60" height="6" rx="3" fill="white" opacity="0.5"/>
+          <circle cx="248" cy="56" r="7" fill="white" opacity="0.15"/>
+          <!-- Content cards -->
+          <rect x="58" y="80" width="62" height="80" rx="4" fill="white" stroke="#DBCAD5" stroke-width="0.8"/>
+          <rect x="66" y="90" width="40" height="4" rx="2" fill="#C8B0C0"/>
+          <rect x="66" y="100" width="30" height="18" rx="2" fill="#6E2060" opacity="0.15"/>
+          <text x="81" y="113" font-family="Georgia,serif" font-size="10" fill="#6E2060" text-anchor="middle">42</text>
+          <rect x="66" y="126" width="40" height="3" rx="1.5" fill="#C8B0C0"/>
+          <rect x="66" y="135" width="28" height="3" rx="1.5" fill="#C8B0C0"/>
+          <!-- Chart card -->
+          <rect x="130" y="80" width="130" height="80" rx="4" fill="white" stroke="#DBCAD5" stroke-width="0.8"/>
+          <rect x="140" y="90" width="60" height="4" rx="2" fill="#C8B0C0"/>
+          <!-- Bar chart mini -->
+          <rect x="140" y="118" width="10" height="28" rx="2" fill="#6E2060" opacity="0.3"/>
+          <rect x="156" y="108" width="10" height="38" rx="2" fill="#6E2060" opacity="0.5"/>
+          <rect x="172" y="113" width="10" height="33" rx="2" fill="#6E2060" opacity="0.4"/>
+          <rect x="188" y="100" width="10" height="46" rx="2" fill="#6E2060" opacity="0.75"/>
+          <rect x="204" y="120" width="10" height="26" rx="2" fill="#6E2060" opacity="0.3"/>
+          <!-- Stand + base -->
+          <rect x="152" y="196" width="16" height="20" rx="2" fill="#C8B8C8"/>
+          <rect x="128" y="215" width="64" height="8" rx="4" fill="#C8B8C8"/>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="section-header" style="margin-bottom:3.5rem;">
+      <div>
+        <div class="section-label">How I Work</div>
+        <h2>Design Process</h2>
+      </div>
+    </div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <div class="step-title">Discover</div>
+        <div class="step-desc">User interviews, surveys, competitive analysis to uncover pain points and opportunity spaces.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <div class="step-title">Define</div>
+        <div class="step-desc">Synthesise research into personas, journey maps, and clear problem statements aligned with business goals.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <div class="step-title">Ideate</div>
+        <div class="step-desc">Rapid wireframing, user flows, and information architecture exploration to generate diverse solutions.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <div class="step-title">Prototype</div>
+        <div class="step-desc">High-fidelity interactive prototypes in Figma with design systems and accessibility baked in from the start.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-num">05</div>
+        <div class="step-title">Test & Iterate</div>
+        <div class="step-desc">Usability testing, iterative feedback loops, and cross-functional collaboration to validate and ship.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools">
+  <div class="container">
+    <div class="section-label" style="margin-bottom:0.5rem;">Toolkit</div>
+    <h2 style="margin-bottom:0.25rem;">Tools & Technologies</h2>
+    <div class="tools-flex">
+      <div class="tool-pill"><span class="tool-dot"></span>Figma</div>
+      <div class="tool-pill"><span class="tool-dot"></span>Miro</div>
+      <div class="tool-pill"><span class="tool-dot"></span>Mixpanel</div>
+      <div class="tool-pill"><span class="tool-dot"></span>Adobe Photoshop</div>
+      <div class="tool-pill"><span class="tool-dot"></span>Adobe Illustrator</div>
+      <div class="tool-pill"><span class="tool-dot"></span>WordPress</div>
+      <div class="tool-pill"><span class="tool-dot"></span>Google Lighthouse</div>
+      <div class="tool-pill"><span class="tool-dot"></span>HTML / CSS / JS</div>
+      <div class="tool-pill"><span class="tool-dot"></span>User Interviews</div>
+      <div class="tool-pill"><span class="tool-dot"></span>Usability Testing</div>
+      <div class="tool-pill"><span class="tool-dot"></span>Design Systems</div>
+      <div class="tool-pill"><span class="tool-dot"></span>WCAG Accessibility</div>
+      <div class="tool-pill"><span class="tool-dot"></span>Responsive Design</div>
+      <div class="tool-pill"><span class="tool-dot"></span>Prototyping</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="section-label" style="margin-bottom:0.5rem;">About</div>
+        <h2 style="margin-bottom:1.5rem;">Research-driven. Impact-oriented.</h2>
+        <div class="about-text">
+          <p>I'm a Product Designer based in Lagos, Nigeria with a background spanning <strong>UX research, interaction design, and design systems</strong>. I work at the intersection of user empathy and business strategy — translating complex needs into digital experiences that convert and delight.</p>
+          <p>From redesigning core features for platforms with <strong>1M+ users</strong> to crafting AI-powered connection flows and healthcare data tools, I bring end-to-end ownership across discovery, prototyping, and delivery.</p>
+          <p>My work is grounded in <strong>accessibility-first principles</strong>, cross-functional collaboration with PMs and engineers, and a commitment to measurable outcomes — not just polished screens.</p>
+        </div>
+      </div>
+      <div>
+        <div class="section-label" style="margin-bottom:1rem;">Certifications</div>
+        <div class="certs-list">
+          <div class="cert-item">
+            <div class="cert-dot"></div>
+            <div>
+              <div class="cert-name">Project Management Professional (PMP)</div>
+              <div class="cert-org">June 2025</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-dot"></div>
+            <div>
+              <div class="cert-name">CPN/NSQ — Digital Product Management</div>
+              <div class="cert-org">Computer Professionals of Nigeria · Nov 2025</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-dot"></div>
+            <div>
+              <div class="cert-name">CAPM Certification Course</div>
+              <div class="cert-org">Simplilearn SkillUp · May 2024</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-dot"></div>
+            <div>
+              <div class="cert-name">B.Sc. Computer Science</div>
+              <div class="cert-org">Lagos State University · 2021–2024</div>
+            </div>
+          </div>
+          <div class="cert-item">
+            <div class="cert-dot"></div>
+            <div>
+              <div class="cert-name">Product Management Programme</div>
+              <div class="cert-org">NerdzFactory IDEAS Project · 2024</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label">Let's Work Together</div>
+    <h2>Ready to build something meaningful?</h2>
+    <p class="contact-sub">Open to full-time roles, contract projects, and design collaborations. Let's connect.</p>
+    <div class="contact-links">
+      <a href="mailto:workwithtunji@gmail.com" class="contact-link primary">workwithtunji@gmail.com</a>
+      <a href="https://www.linkedin.com" class="contact-link ghost" target="_blank">LinkedIn</a>
+      <a href="https://www.dribbble.com" class="contact-link ghost" target="_blank">Dribbble</a>
+      <a href="https://www.behance.net" class="contact-link ghost" target="_blank">Behance</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Olatunji Mafe · Product Designer</p>
+  <p>Lagos, Nigeria</p>
+</footer>
+
+<!-- CASE STUDY MODALS -->
+<div class="overlay" id="overlay" onclick="closeOverlay(event)">
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <div>
+        <div id="modal-tags" style="display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:0.75rem;"></div>
+        <h3 id="modal-title" style="font-size:1.5rem;"></h3>
+      </div>
+      <button class="modal-close" onclick="document.getElementById('overlay').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+const cases = {
+  badge: {
+    title: "Social Badge — Digital Badge Creator",
+    tags: ['UX Design','Platform','Mobile','Figma'],
+    tagClasses: ['tag-ux','tag-platform','tag-mobile','tag-research'],
+    problem: "Event organizers and tech community managers lacked a unified, intuitive tool to create, distribute, and manage digital badges. Existing tools were fragmented, technically complex, and inaccessible to non-technical users.",
+    research: [
+      "Conducted 5+ research sessions including user interviews, surveys, and competitive analysis across badge and certificate platforms.",
+      "Mapped existing mental models of badge creation to identify terminology mismatches and flow bottlenecks.",
+      "Ran usability tests on competitor flows to benchmark baseline friction points.",
+      "Synthesised findings into personas: the Event Organizer (efficiency-driven) and the Badge Recipient (recognition-seeking)."
+    ],
+    solution: "Designed end-to-end authentication flows (sign-up, login, password recovery), a notification center, and a settings experience with a clean, layered interaction model. Applied accessibility-first principles and delivered responsive designs across mobile and desktop.",
+    impact: [
+      { val: "50%", label: "Dev Rate Increase" },
+      { val: "5+", label: "Research Sessions" },
+      { val: "3", label: "Core Flows Designed" },
+      { val: "A11y", label: "Accessible Design" }
+    ],
+    outcome: "Collaboration with PMs, UX leads, engineers, and marketers resulted in a 50% increase in development rate. The interaction model balanced discoverability with simplicity for a dual audience of organizers and attendees."
+  },
+  proptech: {
+    title: "Property-Tech Feature Redesign",
+    tags: ['Redesign','UX Research','PropTech','1M+ Users'],
+    tagClasses: ['tag-ux','tag-research','tag-platform','tag-mobile'],
+    problem: "A core feature of a leading Nigerian proptech platform had accumulated visual inconsistencies and usability issues across its 1 million+ user base. Drop-off rates at key decision points signalled a misalignment between user expectations and the interface.",
+    research: [
+      "Conducted targeted usability testing on the existing feature to identify friction points in the task flow.",
+      "Performed heuristic evaluation against Nielsen's 10 usability principles.",
+      "Mapped user journeys of both property seekers and listers to surface context-specific pain points.",
+      "Benchmarked against competitor proptech platforms operating in emerging markets."
+    ],
+    solution: "Redesigned the core feature with a focus on visual consistency, clear information hierarchy, and accessibility compliance (WCAG). Created a scalable design system component set to ensure future consistency. Delivered responsive designs for both mobile and desktop contexts.",
+    impact: [
+      { val: "1M+", label: "Users Reached" },
+      { val: "WCAG", label: "Accessible" },
+      { val: "↑", label: "Visual Consistency" },
+      { val: "System", label: "Design Components" }
+    ],
+    outcome: "The redesigned feature improved usability across the platform's largest user segment. Accessible, responsive designs ensured parity of experience across device types — critical for a predominantly mobile-first Nigerian user base."
+  },
+  venn: {
+    title: "Venn — AI-Powered Event Networking App",
+    tags: ['AI-Powered','Mobile','UX Research','Interaction Design'],
+    tagClasses: ['tag-ai','tag-mobile','tag-research','tag-ux'],
+    problem: "Event networking is notoriously inefficient — attendees leave most events having made few meaningful connections. Existing solutions offered generic attendee lists with no intelligent matching, leading to low engagement and shallow interactions.",
+    research: [
+      "Interviewed event attendees and organizers to understand current networking behaviors and pain points.",
+      "Mapped the emotional arc of event networking: arrival anxiety → connection hesitation → post-event drop-off.",
+      "Explored mental models around AI suggestions: trust, transparency, and perceived relevance.",
+      "Created journey maps identifying 4 critical drop-off moments in the connection flow."
+    ],
+    solution: "Designed an AI-powered match experience that surfaces relevant connections with contextual rationale. Focused on reducing decision fatigue with progressive disclosure, and removing friction from the initiation moment. Delivered full interactive prototypes in Figma covering onboarding, event dashboard, match flow, and messaging.",
+    impact: [
+      { val: "AI", label: "Match Intelligence" },
+      { val: "E2E", label: "UX Ownership" },
+      { val: "↓", label: "Connection Friction" },
+      { val: "4", label: "Key Flows Designed" }
+    ],
+    outcome: "The AI-powered flow prototype demonstrated significantly reduced time-to-first-connection in simulated usability tests. The transparent AI rationale design pattern built trust while maintaining a seamless, low-friction experience."
+  },
+  health: {
+    title: "Healthcare Research Workflow Platform",
+    tags: ['Healthcare','UX Design','Accessibility','Data Platform'],
+    tagClasses: ['tag-research','tag-ux','tag-ecommerce','tag-platform'],
+    problem: "Medical researchers and healthcare professionals were managing complex data workflows across disconnected tools — spreadsheets, paper forms, and fragmented databases. The cognitive load was high and error rates were a serious concern in a high-stakes domain.",
+    research: [
+      "Conducted contextual inquiry sessions with medical professionals to observe existing workflows in context.",
+      "Mapped information architecture of current tools to identify redundancy and gap areas.",
+      "Ran card-sorting exercises to understand how clinicians mentally organise research data.",
+      "Accessibility audit to understand assistive technology usage patterns in healthcare settings."
+    ],
+    solution: "Designed a unified research workflow platform with a clear information architecture, role-based navigation, and accessible data visualisations. Applied WCAG 2.1 AA standards throughout. Created responsive layouts optimised for both desktop (primary research environment) and mobile (ward rounds and quick reference).",
+    impact: [
+      { val: "WCAG", label: "2.1 AA Compliant" },
+      { val: "Multi", label: "Device Support" },
+      { val: "↓", label: "Cognitive Load" },
+      { val: "Role", label: "Based Navigation" }
+    ],
+    outcome: "The simplified IA reduced navigation time in prototype testing. Accessibility-first design ensured compliance with healthcare institution standards. The responsive system served both desktop power users and mobile-first clinical staff effectively."
+  }
+};
+
+function openCase(key) {
+  const c = cases[key];
+  document.getElementById('modal-title').textContent = c.title;
+  const tagsEl = document.getElementById('modal-tags');
+  tagsEl.innerHTML = c.tags.map((t,i) => `<span class="tag ${c.tagClasses[i]}">${t}</span>`).join('');
+  document.getElementById('modal-body').innerHTML = `
+    <div class="modal-section">
+      <h4>Problem</h4>
+      <p>${c.problem}</p>
+    </div>
+    <div class="modal-section">
+      <h4>Research & Discovery</h4>
+      <ul>${c.research.map(r => `<li>${r}</li>`).join('')}</ul>
+    </div>
+    <div class="modal-section">
+      <h4>Design Solution</h4>
+      <p>${c.solution}</p>
+    </div>
+    <div class="modal-section">
+      <h4>Business Impact</h4>
+      <div class="impact-chips">
+        ${c.impact.map(i => `<div class="impact-chip"><strong>${i.val}</strong><span>${i.label}</span></div>`).join('')}
+      </div>
+    </div>
+    <div class="modal-section">
+      <h4>Outcome</h4>
+      <p>${c.outcome}</p>
+    </div>
+  `;
+  document.getElementById('overlay').classList.add('open');
+}
+
+function closeOverlay(e) {
+  if (e.target === document.getElementById('overlay')) {
+    document.getElementById('overlay').classList.remove('open');
+  }
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.getElementById('overlay').classList.remove('open');
+});
+
+function toggleMenu(btn) {
+  const links = document.querySelector('.nav-links');
+  const isOpen = links.style.display === 'flex';
+  links.style.cssText = isOpen ? '' : 'display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(248,246,241,0.97);padding:2rem;gap:1.5rem;border-bottom:1px solid rgba(26,24,20,0.1);backdrop-filter:blur(12px);z-index:99;';
+  btn.querySelectorAll('span')[0].style.transform = isOpen ? '' : 'rotate(45deg) translate(4px,4px)';
+  btn.querySelectorAll('span')[1].style.opacity = isOpen ? '' : '0';
+  btn.querySelectorAll('span')[2].style.transform = isOpen ? '' : 'rotate(-45deg) translate(4px,-4px)';
+}
+
+// Scroll-based nav link highlighting
+const sections = ['hero','work','process','about','contact'];
+window.addEventListener('scroll', () => {
+  const y = window.scrollY + 100;
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const link = document.querySelector(`.nav-links a[href="#${id}"]`);
+    if (!link) return;
+    if (el.offsetTop <= y && el.offsetTop + el.offsetHeight > y) {
+      link.style.color = 'var(--accent)';
+    } else {
+      link.style.color = '';
+    }
+  });
+}, { passive: true });
+</script>
+</body>
+</html>
